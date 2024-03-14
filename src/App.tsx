@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "./hooks/reduxHooks";
+import { fetchItems } from "./store/reducers/ActionCreators";
+import { Col, Row } from 'antd';
+import CardComponent from "./components/Card/Card";
+import { shopSlice } from "./store/reducers/shop.slice";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const dispatch = useAppDispatch()
+  const { items, loading, error } = useAppSelector(state => state.shop)
+  const totalPrice = items.reduce((acc, el) => {
+    return acc + el.price * el.count
+  }, 0)
+
+  useEffect(() => {
+    dispatch(fetchItems())
+  }, [])
+
+return (
+  <div>
+
+    <Row>
+      <Col 
+      style={{ backgroundColor: "grey" }}
+      span={16}>
+        <div className="cardsContainer">
+          {items.map(item => (
+            <div className="Card">
+              <CardComponent item={item} />
+            </div>
+          ))}
+        </div>
+      </Col>
+      <Col 
+      style={{ backgroundColor: "lightGrey" }}
+      span={8}><h1>Итого {totalPrice.toFixed(2)}$</h1></Col>
+    </Row>
+
+  </div >
+);
 }
 
 export default App;

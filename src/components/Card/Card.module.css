@@ -1,0 +1,50 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  min-height: 850px;
+  margin: 5px 0 5px 0;
+  /* justify-content: space-between; */
+}
+
+.buttomSection {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.buttonRemove {
+  width: 210px;
+}
+
+.iconRemove {
+    width: 20px;
+    height: 20px;
+}
+
+.buttonMinus,
+.buttonPlus {
+  width: 50px;
+}
+
+.middleSection {
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+    margin: 10px 10px;
+}
+
+.middleSection,
+.totalPrice,
+.removeSection {
+    margin-top: 5px;
+}
