@@ -15,7 +15,7 @@ const RightColumn = ({ items }: LeftColumnProps) => {
         <Col
             className={ cl.container }
             style={{ backgroundColor: "lightGrey" }}
-            span={8}><h1>Итого {totalPrice.toFixed(2)}$</h1></Col>
+            span={6}><h1>Итого {totalPrice.toFixed(2)}$</h1></Col>
     );
 };
 

@@ -11,7 +11,7 @@ const LeftColumn = ({ items }: LeftColumnProps) => {
 
     return (
         <Col
-            span={16}>
+            span={18}>
             <div className={ cl.cardsContainer }>
                 {items.map(item => (
                     <div
