@@ -1,5 +1,7 @@
-.cardsContainer {
-display: flex;
-flex-wrap: wrap;
-justify-content: space-evenly;
+.serviceMessage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

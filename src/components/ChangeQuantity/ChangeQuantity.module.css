@@ -1,0 +1,13 @@
+.middleSection {
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  margin: 10px 10px 0 10px;
+}
+
+.buttonMinus,
+.buttonPlus {
+  width: 50px;
+}

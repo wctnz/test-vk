@@ -4,6 +4,8 @@ import cl from "./Card.module.css"
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { shopSlice } from '../../store/reducers/shop.slice';
 import { MdDelete } from "react-icons/md";
+import ChangeQuantity from '../ChangeQuantity/ChangeQuantity';
+import PriceInfo from '../PriceInfo/PriceInfo';
 
 const { Meta } = Card;
 interface CardProps {
@@ -11,12 +13,7 @@ interface CardProps {
 }
 const CardComponent = ({ item }: CardProps) => {
   const dispatch = useAppDispatch()
-  const handlePlusCartItem = (item: Item) => {
-    dispatch(shopSlice.actions.plusCartItem(item))
-  }
-  const handleMinusCartItem = (item: Item) => {
-    dispatch(shopSlice.actions.minusCartItem(item))
-  }
+  
   const handleRemoveItem = (id: number) => {
     if (window.confirm("Вы действительно хотите удалить товар?")) {
       dispatch(shopSlice.actions.removeItem(id))
@@ -43,30 +40,13 @@ const CardComponent = ({ item }: CardProps) => {
             </div>
             <div className={cl.buttomSection}>
             
-              <div className={cl.middleSection}>
-                <Button
-                  className={cl.buttonMinus}
-                  disabled={item.count === 1}
-                  onClick={() => handleMinusCartItem(item)}
-                  type="primary">-</Button>
-                <h1>{item.count}</h1>
-                <Button
-                  className={cl.buttonPlus}
-                  disabled={item.count === 10}
-                  onClick={() => handlePlusCartItem(item)}
-                  type="primary">+</Button>
-              </div>
-              
-              <div className={cl.totalPrice}>
-                <h3>Стоимость - {item.price} $</h3>
-                {item.count > 1 ? <h3>Общая стоимость - {item.totalPrice} $</h3> : ""}
-              </div>
-              <div className={cl.removeSection}>
+              <ChangeQuantity item={ item }/>
+              <PriceInfo item={ item }/>
+
                 <Button
                   className={cl.buttonRemove}
                   onClick={() => handleRemoveItem(item.id)}
                   type="primary"><MdDelete className={cl.iconRemove} /></Button>
-              </div>
             </div>
           </div>
         </Card>
